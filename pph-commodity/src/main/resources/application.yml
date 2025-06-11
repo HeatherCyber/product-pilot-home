@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.33.10:3306/pph_commodity?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    #配置 alibaba oos 相关参数
+    alicloud:
+      oss:
+        endpoint: oss-us-west-1.aliyuncs.com
+      access-key: LTAI5tHCZpKstJ4cDnHUdmHT
+      secret-key: nnPGl9KinXsrb0AqixlQagcOL4CZdR
+    #将 pph-commodity 微服务模块注册到 nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  #1. 关闭 thymeleaf 的缓存，这样当前端页面变化时，就会看到效果
+  #2. 当在生产环境时，需要将 cache 设置为 true, 开启缓存，提高效率
+  thymeleaf:
+    cache: false
+  application:
+    name: pph-commodity
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto #配置主键自增
+      logic-delete-value: 0 # 逻辑已删除值(默认为 1, 老韩提示:调整成我们自己的)
+      logic-not-delete-value: 1 # 逻辑未删除值(默认为 0 老韩提示:调整成我们自己的)
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #配置 MyBatis-Plus 输出 SQL语句

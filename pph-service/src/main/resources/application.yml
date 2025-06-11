@@ -1,0 +1,18 @@
+#server:
+#  port: 7070
+#
+#spring:
+#  cloud:
+##   add aliyun oss configuration
+#    alicloud:
+#      access-key: LTAI5tHCZpKstJ4cDnHUdmHT
+#      secret-key: nnPGl9KinXsrb0AqixlQagcOL4CZdR
+#      oss:
+#        endpoint: oss-us-west-1.aliyuncs.com
+#        bucket: product-pilot-home
+#    #将 pph-service模块 注册到 nacos
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#  application:
+#    name: pph-service

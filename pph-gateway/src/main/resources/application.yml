@@ -1,0 +1,45 @@
+server:
+  port: 5050
+
+spring:
+  application:
+    name: pph-gateway
+  cloud:
+    #将 pph-gateway模块 注册到 nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    #配置网关
+    gateway:
+      routes: #配置路由, 可以有多个路由配置
+        # 路由：到 pph-commodity 商品管理模块
+        # 注意：因为/api/commodity/** 是一个更精确的路径，必须放在/api/** 这一组路由前面
+        # 否则会报告 {"msg":"invalid token","code":401}
+        - id: pph_commodity_route
+          uri: lb://pph-commodity
+          predicates:
+            - Path=/api/commodity/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+        # 路由：到pph-service模块,获取上传图片的aliyun OSS policy和签名
+        - id: pph_service_route
+          uri: lb://pph-service
+          predicates:
+            - Path=/api/service/**
+          filters:
+            - RewritePath=/api/service/(?<segment>.*),/$\{segment}
+        # 路由：到renren-fast登录模块
+        - id: pph_renren_fast_route
+          #配置负载均衡
+          uri: lb://renren-fast
+          #断言，如果发现路径有 /api 就可以路由转到 renren-fast
+          predicates:
+            - Path=/api/**
+          #路径重写, 表示api拿到，才能找到真正的请求地址
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+        # 路由：配置nginx
+        - id: pph_host_route
+          uri: lb://pph-commodity
+          predicates:
+            - Host=**.productpilothome.com
