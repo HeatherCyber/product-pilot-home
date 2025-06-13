@@ -34,7 +34,10 @@ Open project using IntelliJ IDEA
 2. 启动数据库与 Nginx（详见 deploy/README_DEPLOY.md）
 Start MySQL and Nginx containers (see deploy/README_DEPLOY.md)
 
-3. 启动以下模块 / Start the following modules:
+3. 启动 Nacos 注册中心（推荐版本：1.1.3）
+Start Nacos (Recommended: version 1.1.3)
+
+4.启动以下模块 / Start the following modules:
 
 | 模块 / Module     | 端口 / Port | 启动类 / Main Class          |
 | --------------- | --------- | ------------------------- |
@@ -44,8 +47,6 @@ Start MySQL and Nginx containers (see deploy/README_DEPLOY.md)
 | `renren-fast`   | 8080      | `RenrenApplication`       |
 
 
-4. 启动 Nacos 注册中心（推荐版本：1.1.3）
-Start Nacos (Recommended: version 1.1.3)
 
 ## 🐳 容器服务部署 / Docker-based Deployment
 使用 start-docker.sh 启动以下基础容器服务：
