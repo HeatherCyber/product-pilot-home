@@ -5,18 +5,18 @@ spring:
     url: jdbc:mysql://192.168.33.10:3306/pph_commodity?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
-    #配置 alibaba oos 相关参数 - 敏感信息已移至Nacos配置中心
+    # Configure alibaba OSS related parameters - sensitive information moved to Nacos configuration center
     alicloud:
       oss:
         endpoint: ${ALIYUN_OSS_ENDPOINT:oss-us-west-1.aliyuncs.com}
       access-key: ${ALIYUN_ACCESS_KEY:your-access-key}
       secret-key: ${ALIYUN_SECRET_KEY:your-secret-key}
-    #将 pph-commodity 微服务模块注册到 nacos
+    # Register pph-commodity microservice module to nacos
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-  #1. 关闭 thymeleaf 的缓存，这样当前端页面变化时，就会看到效果
-  #2. 当在生产环境时，需要将 cache 设置为 true, 开启缓存，提高效率
+  #1. Disable thymeleaf cache, so when frontend pages change, you can see the effect
+  #2. In production environment, set cache to true, enable cache, improve efficiency
   thymeleaf:
     cache: false
   application:
@@ -26,8 +26,8 @@ mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
-      id-type: auto #配置主键自增
-      logic-delete-value: 0 # 逻辑已删除值(默认为 1, 老韩提示:调整成我们自己的)
-      logic-not-delete-value: 1 # 逻辑未删除值(默认为 0 老韩提示:调整成我们自己的)
+      id-type: auto # Configure primary key auto increment
+      logic-delete-value: 0 # Logic deleted value (default is 1, adjusted to our own)
+      logic-not-delete-value: 1 # Logic not deleted value (default is 0, adjusted to our own)
     configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #配置 MyBatis-Plus 输出 SQL语句
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # Configure MyBatis-Plus output SQL statements

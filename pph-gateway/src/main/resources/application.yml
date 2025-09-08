@@ -5,40 +5,40 @@ spring:
   application:
     name: pph-gateway
   cloud:
-    #将 pph-gateway模块 注册到 nacos
+    # Register pph-gateway module to nacos
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    #配置网关
+    # Configure gateway
     gateway:
-      routes: #配置路由, 可以有多个路由配置
-        # 路由：到 pph-commodity 商品管理模块
-        # 注意：因为/api/commodity/** 是一个更精确的路径，必须放在/api/** 这一组路由前面
-        # 否则会报告 {"msg":"invalid token","code":401}
+      routes: # Configure routes, can have multiple route configurations
+        # Route: to pph-commodity product management module
+        # Note: Because /api/commodity/** is a more precise path, it must be placed before the /api/** route group
+        # Otherwise it will report {"msg":"invalid token","code":401}
         - id: pph_commodity_route
           uri: lb://pph-commodity
           predicates:
             - Path=/api/commodity/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
-        # 路由：到pph-service模块,获取上传图片的aliyun OSS policy和签名
+        # Route: to pph-service module, get upload image aliyun OSS policy and signature
         - id: pph_service_route
           uri: lb://pph-service
           predicates:
             - Path=/api/service/**
           filters:
             - RewritePath=/api/service/(?<segment>.*),/$\{segment}
-        # 路由：到renren-fast登录模块
+        # Route: to renren-fast login module
         - id: pph_renren_fast_route
-          #配置负载均衡
+          # Configure load balancing
           uri: lb://renren-fast
-          #断言，如果发现路径有 /api 就可以路由转到 renren-fast
+          # Assertion, if path contains /api, route to renren-fast
           predicates:
             - Path=/api/**
-          #路径重写, 表示api拿到，才能找到真正的请求地址
+          # Path rewrite, means api is obtained, then find the real request address
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
-        # 路由：配置nginx
+        # Route: configure nginx
         - id: pph_host_route
           uri: lb://pph-commodity
           predicates:

@@ -21,7 +21,7 @@ import java.util.Date;
  */
 @RestController
 public class OssServiceController {
-    //这里的注入方式是 OSS 接口注入, 不要写成实现类了
+    // Use OSS interface injection here, don't use implementation class
     @Resource
     OSS ossClient;
 
@@ -33,19 +33,19 @@ public class OssServiceController {
     private String accessId;
 
     /**
-     * 获取文件上传签名/授权
-     * 这段代码从阿里云示例文档拷贝, 并做修改，去掉暂时不用的代码
+     * Get file upload signature/authorization
+     * This code is copied from Aliyun example documentation and modified, removing unused code
      * @return
      */
     @RequestMapping("/oss/policy")
     public R policy() {
         String host = "https://" + bucket + "." + endpoint;
-        // host 的 格 式 为bucketname.endpoint
-        // callbackUrl 为 上传回调服务器的 URL，请将下面的 IP 和 Port 配置为您自己的真实信息。暂时不用
+        // host format is bucketname.endpoint
+        // callbackUrl is the URL of the upload callback server, please configure the IP and Port below with your real information. Not used for now
         //String callbackUrl = "http://88.88.88.88:8888";
-        //我们可以将文件按照 年-月-日的形式分目录存放在阿里云[以后优化]
+        // We can store files in Aliyun by year-month-day directory format [to be optimized later]
         String format = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String dir = format + "/"; // 用户上传文件时指定的前缀。
+        String dir = format + "/"; // Prefix specified when user uploads files.
 
         Map<String, String> respMap = null;
         try {

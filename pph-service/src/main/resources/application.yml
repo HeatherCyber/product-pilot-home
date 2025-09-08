@@ -10,7 +10,7 @@
 #      oss:
 #        endpoint: YOUR_ALIYUN_OSS_ENDPOINT
 #        bucket: product-pilot-home
-#    #将 pph-service模块 注册到 nacos
+#    # Register pph-service module to nacos
 #    nacos:
 #      discovery:
 #        server-addr: 127.0.0.1:8848

@@ -3,7 +3,7 @@
  *
  * https://www.renren.io
  *
- * 版权所有，侵权必究！
+ * All rights reserved, infringement will be prosecuted!
  */
 
 package com.productpilothome.common.utils;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 返回数据
+ * Return data
  *
  * @author Mark sunlightcs@gmail.com
  */
@@ -27,7 +27,7 @@ public class R extends HashMap<String, Object> {
 	}
 	
 	public static R error() {
-		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+		return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "Unknown exception, please contact administrator");
 	}
 	
 	public static R error(String msg) {
