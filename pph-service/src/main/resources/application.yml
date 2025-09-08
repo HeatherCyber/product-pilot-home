@@ -5,10 +5,10 @@
 #  cloud:
 ##   add aliyun oss configuration
 #    alicloud:
-#      access-key: LTAI5tHCZpKstJ4cDnHUdmHT
-#      secret-key: nnPGl9KinXsrb0AqixlQagcOL4CZdR
+#      access-key: YOUR_ALIYUN_ACCESS_KEY
+#      secret-key: YOUR_ALIYUN_SECRET_KEY
 #      oss:
-#        endpoint: oss-us-west-1.aliyuncs.com
+#        endpoint: YOUR_ALIYUN_OSS_ENDPOINT
 #        bucket: product-pilot-home
 #    #将 pph-service模块 注册到 nacos
 #    nacos:

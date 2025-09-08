@@ -28,8 +28,9 @@ public class TestController {
         // yourEndpoint 填写 Bucket 所在地域对应的 Endpoint。
         String endpoint = "oss-us-west-1.aliyuncs.com";
         // 阿里云账号 AccessKey 拥有所有 API 的访问权限，风险很高。强烈建议您创建并使用 RAM用户进行 API 访问或日常运维，请登录 RAM 控制台创建 RAM 用户。
-        String accessKeyId = "LTAI5tHCZpKstJ4cDnHUdmHT";
-        String accessKeySecret = "nnPGl9KinXsrb0AqixlQagcOL4CZdR";
+        // 敏感信息已移至环境变量或配置中心
+        String accessKeyId = System.getenv("ALIYUN_ACCESS_KEY");
+        String accessKeySecret = System.getenv("ALIYUN_SECRET_KEY");
         // 创建 OSSClient 实例。
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         // 填写本地文件的完整路径。如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
