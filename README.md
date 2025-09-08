@@ -1,132 +1,82 @@
-# 📦 产品驾驶舱系统 / Product Pilot Home
-多模块企业级微服务系统项目，整合前后端分离架构、注册中心、服务网关与快速开发平台。 
+# 🚀 Product Pilot Home - Distributed E-commerce Demo Platform
 
-A multi-module enterprise-level microservices project integrating front-back separation, service discovery, gateway routing, and rapid development tools.
+> **📱 Frontend Repository**: [product-pilot-home-frontend](https://github.com/HeatherCyber/product-pilot-home-frontend) - Vue.js Frontend Application
 
-## 🌐 项目简介 / Project Overview
-本系统基于 Java 技术栈构建，采用 Spring Boot + Spring Cloud 架构，配套 Vue 前端与 renren-fast 后台管理，部署环境为 VirtualBox + CentOS7 + Docker。
+## 🌟 Overview
 
-This system is built using the Java stack, following the Spring Boot + Spring Cloud architecture, with a Vue-based front end and renren-fast admin panel, deployed in a VirtualBox + CentOS7 + Docker environment.
+This project was developed in a professional training bootcamp under instructor guidance, focusing on backend microservices development and enterprise-style deployment practices. It simulates a distributed e-commerce product management platform, applying concepts of service decomposition, service discovery, API gateway routing, and containerized deployment.
 
-## 📁 项目结构 / Project Structure
+## 🏗️ Architecture
+
+### Backend Services (Current Repository)
 ```
-bash
 product-pilot-home/
-├── pph-common/         # 公共依赖模块 / Common utilities
-├── pph-commodity/      # 商品服务模块 / Commodity service
-├── pph-service/        # 通用业务服务 / General service integration
-├── pph-gateway/        # 网关服务 / API Gateway (Spring Cloud Gateway)
-├── renren-fast/        # 管理后台系统 / Admin system
-├── renren-generator/   # 代码生成器 / Code generator (MyBatis-Plus)
-├── deploy/             # 部署文件夹 / Deployment scripts & configs
-│   ├── docker/
-│   ├── start-docker.sh
-│   └── README_DEPLOY.md
-├── pom.xml
-└── README.md
+├── pph-commodity/      # Product catalog microservice (Custom)
+├── pph-service/        # File storage service (Aliyun OSS integration)
+├── pph-gateway/        # API Gateway (Spring Cloud Gateway)
+├── renren-fast/        # Admin management system (Open source scaffold)
+├── renren-generator/   # Code generator (MyBatis-Plus) (Open source scaffold)
+├── pph-common/         # Shared utilities and components
+└── deploy/             # Docker deployment configurations
 ```
 
-## 🚀 快速启动 / Quick Start
-✅ 开发模式 / Development (IDEA)
-1. 使用 IntelliJ IDEA 打开项目
-Open project using IntelliJ IDEA
-
-2. 启动数据库与 Nginx（详见 deploy/README_DEPLOY.md）
-Start MySQL and Nginx containers (see deploy/README_DEPLOY.md)
-
-3. 启动以下模块 / Start the following modules:
-
-| 模块 / Module     | 端口 / Port | 启动类 / Main Class          |
-| --------------- | --------- | ------------------------- |
-| `pph-gateway`   | 5050      | `PphGatewayApplication`   |
-| `pph-commodity` | 9090      | `PphCommodityApplication` |
-| `pph-service`   | 7070      | `PphServiceApplication`   |
-| `renren-fast`   | 8080      | `RenrenApplication`       |
-
-
-4. 启动 Nacos 注册中心（推荐版本：1.1.3）
-Start Nacos (Recommended: version 1.1.3)
-
-## 🐳 容器服务部署 / Docker-based Deployment
-使用 start-docker.sh 启动以下基础容器服务：
-
-Use start-docker.sh to launch containerized services:
-
-| 服务 / Service | 镜像 / Image | 端口 / Port |
-| ------------ | ---------- | --------- |
-| MySQL        | mysql:5.7  | 3306      |
-| Nginx        | nginx:1.10 | 80        |
-
-
+### Frontend Application (Separate Repository)
 ```
-bash
-cd deploy
-chmod +x start-docker.sh
-./start-docker.sh
+product-pilot-home-frontend/
+├── src/                # Vue.js source code
+├── static/             # Static assets and plugins
+├── build/              # Webpack build configuration
+├── config/             # Environment configuration
+├── package.json        # Frontend dependencies
+└── README.md           # Frontend documentation
 ```
-📄 查看部署文档 / See full deployment: deploy/README_DEPLOY.md
 
----
-## 🧱 技术栈 / Tech Stack
+## 🛠️ Technology Stack
 
-| 类别 / Type              | 技术 / Technology                                      |
-| ---------------------- | ---------------------------------------------------- |
-| 前端 / Frontend          | HTML, CSS, JS, Vue, ElementUI, Axios, jQuery, Node.js |
-| 后端 / Backend           | Spring Boot, Spring Cloud, MyBatis-Plus              |
-| 数据库 / DB               | MySQL 5.7                                            |
-| 注册中心 / Registry        | Alibaba Nacos                                        |
-| 网关 / Gateway           | Spring Cloud Gateway                                 |
-| 文件存储 / OSS             | Alibaba OSS                                          |
-| 快速开发 / Rapid Dev       | renren-generator, renren-fast                        |
-| 运维工具 / DevOps          | Linux, Docker, Nginx                                 |
-| 虚拟化工具 / Virtualization | VirtualBox, Vagrant                                  |
-| 常用技术 / Others          | Postman, Maven, Git, CORS, SPU/SKU schema     |
+| Category | Technologies |
+|----------|-------------|
+| **Backend** | Spring Boot, Spring Cloud, MyBatis-Plus |
+| **Database** | MySQL 5.7 |
+| **Service Registry** | Nacos |
+| **API Gateway** | Spring Cloud Gateway |
+| **File Storage** | Aliyun OSS |
+| **Frontend** | Vue.js, ElementUI, Axios |
+| **DevOps** | Docker, Nginx, Linux (CentOS 7 VMs) |
 
----
-## 📚 数据库说明 / Database Notes
-- 数据库名Database name：pph_commodity
+## ⚙️ Deployment
 
-- 数据库用户User/Password：root / root
+### Infrastructure Setup
+- **Virtual Environment**: CentOS 7 VMs simulating distributed infrastructure
+- **Remote Database**: MySQL running on a separate VM instance
+- **Load Balancer**: Nginx reverse proxy for API routing and load balancing
+- **Containerization**: Docker-based deployment for service isolation and orchestration
 
-- 表结构包括Tables included：SPU、SKU、Category、Brand, etc.
+## 📚 Key Features
 
-- 初始化脚本路径 Initialization Script path：deploy/docker/mysql/init.sql（可选Optional）
+### Custom Development
+- **Product Catalog Service**: SPU/SKU modeling and management
+- **Category and Brand Management**: Complete product organization system
+- **File Upload Service**: Aliyun OSS integration for cloud storage
+- **API Gateway**: Centralized routing and cross-cutting concerns
+- **Containerized Deployment**: Docker-based service orchestration
 
----
-## 🔗 常用访问路径 / Key Endpoints
-| 模块 / Module          | 地址 / URL                                                                                    |
-| -------------------- |---------------------------------------------------------------------------------------------|
-| 前端首页 / Frontend UI   | [http://localhost/](http://localhost/)                                                      |
-| 后台管理 / Admin Panel   | [http://localhost:8080](http://localhost:8080)                                              |
-| 网关服务 / Gateway API   | [http://localhost:5050](http://localhost:5050)                                              |
-| 注册中心 / Nacos Console | [http://localhost:8848/nacos](http://localhost:8848/nacos)                                  |
-| 接口文档 / Swagger Docs  | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) or /doc.html |
+### Open Source Integration
+- **Admin Dashboard**: Built on [renren-fast](https://gitee.com/renrenio/renren-fast) scaffold
+- **Code Generation**: Leveraging [renren-generator](https://gitee.com/renrenio/renren-generator)
+- **Frontend Framework**: Extended [renren-fast-vue](https://gitee.com/renrenio/renren-fast-vue) with e-commerce modules
 
----
-## ✅ 部署验证建议 / Verify Deployment
-| 检查点 / Check                 | 工具 / How to Test         |
-| --------------------------- |--------------------------|
-| 容器是否运行 / Containers running | `docker ps`              |
-| 后端服务端口 / Backend reachable  | browser、Postman          |
-| Nacos 注册状态 / Nacos status   | Web Console              |
-| 接口返回是否正常 / API response     | call `/api/**` Endpoint |
+## 👤 My Contributions
 
----
-## 📘 项目文档 / Documentation
-- deploy/README_DEPLOY.md：Docker + 虚拟机部署说明 Virtual Machine
+- ✅ **Custom Microservices**: Implemented commodity and OSS services from scratch
+- ✅ **Service Integration**: Integrated Spring Cloud Gateway and Nacos for routing and service discovery
+- ✅ **Enterprise Deployment**: Designed and tested deployment on Docker + Nginx + CentOS VMs
+- ✅ **Full-Stack Integration**: Connected backend services with Vue.js frontend
+- ✅ **Business Logic**: Extended e-commerce domain logic (SPU/SKU, categories, brands)
 
-- deploy/start-docker.sh：一键启动脚本One-Click Startup Script
-
-- deploy/docker/mysql/init.sql：数据库初始化脚本Database Initialization Script（可选Optional）
-
----
 ## 📄 License
-本项目用于教学与学习目的，采用 MIT 开源协议。
 
-This project is for learning & educational purposes and is licensed under the MIT License.
-
+This project is for educational and learning purposes, licensed under the MIT License.
 
 ---
-📬 如有问题请通过 issue 联系作者或发送邮件。
 
-Feel free to open an issue or contact the author for help.
+📌 **Note**: This project is for educational purposes. Many business features are still in progress, but the backend already demonstrates a complete distributed architecture and core e-commerce functionality.
