@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 商品 spu 信息
+ * Product SPU information
  * 
  * @author heather
  * @email heatherwang0709@gmail.com
@@ -21,12 +21,12 @@ public class SpuInfoEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 商品 id
+	 * Product id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * 商品名称
+	 * Product name
 	 */
 	private String spuName;
 	/**

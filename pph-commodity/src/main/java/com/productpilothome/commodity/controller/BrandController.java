@@ -25,7 +25,7 @@ import com.productpilothome.common.utils.R;
 
 
 /**
- * 家居品牌
+ * Home product brand
  *
  * @author heather
  * @email heatherwang0709@gmail.com

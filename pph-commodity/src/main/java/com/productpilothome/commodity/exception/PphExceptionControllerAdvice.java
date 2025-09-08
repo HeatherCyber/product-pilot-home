@@ -18,8 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 1. @ResponseBody 都以 json 格式返回数据
- * 2. @ControllerAdvice (basePackages = "")统一接管指定的包下抛出的异常
+ * 1. @ResponseBody returns data in json format
+ * 2. @ControllerAdvice (basePackages = "") uniformly handles exceptions thrown under the specified package
  */
 
 @Slf4j
@@ -27,9 +27,9 @@ import java.util.Map;
 @ControllerAdvice(basePackages = "com.productpilothome.commodity.controller")
 public class PphExceptionControllerAdvice {
     /**
-     * 1. 数据校验错误属于 MethodArgumentNotValidException
-     * 2. 异常匹配的规则是先精确匹配，然后匹配范围更大的异常类型
-     * 3. 写清楚精确匹配的异常后，我们可以更加准确的定制提示异常信息
+     * 1. Data validation errors belong to MethodArgumentNotValidException
+     * 2. The rule of exception matching is to match precisely first, then match exception types with larger scope
+     * 3. After writing the precise matching exceptions clearly, we can more accurately customize exception information
      */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public R handleVaildException(MethodArgumentNotValidException e) {

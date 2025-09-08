@@ -20,7 +20,7 @@ import com.productpilothome.common.utils.R;
 
 
 /**
- * 商品分类表
+ * Product category table
  *
  * @author heather
  * @email heatherwang0709@gmail.com

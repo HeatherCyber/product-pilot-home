@@ -3,7 +3,7 @@
  *
  * https://www.renren.io
  *
- * 版权所有，侵权必究！
+ * All rights reserved, infringement will be prosecuted!
  */
 
 package com.productpilothome.commodity.config;

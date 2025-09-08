@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 
 /**
  * home product brand
- * 如果在controller层的API接口处指定了分组校验，那么对应entity的校验注解就必须指定校验组，否则该校验注解失效
+ * If group validation is specified at the API interface in the controller layer, then the validation annotations of the corresponding entity must specify the validation group, otherwise the validation annotation will be invalid
  * @author heather
  * @email heatherwang0709@gmail.com
  * @date 2025-04-28 17:01:53

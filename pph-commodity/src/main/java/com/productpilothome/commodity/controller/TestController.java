@@ -25,26 +25,26 @@ public class TestController {
     @RequestMapping("/test")
     public R testUpload() throws FileNotFoundException {
         log.info("test Upload");
-        // yourEndpoint 填写 Bucket 所在地域对应的 Endpoint。
+        // yourEndpoint should be filled with the Endpoint corresponding to the region where the Bucket is located.
         String endpoint = "oss-us-west-1.aliyuncs.com";
-        // 阿里云账号 AccessKey 拥有所有 API 的访问权限，风险很高。强烈建议您创建并使用 RAM用户进行 API 访问或日常运维，请登录 RAM 控制台创建 RAM 用户。
-        // 敏感信息已移至环境变量或配置中心
+        // Aliyun account AccessKey has access to all APIs, which is very risky. It is strongly recommended to create and use RAM users for API access or daily operations, please log in to the RAM console to create RAM users.
+        // Sensitive information has been moved to environment variables or configuration center
         String accessKeyId = System.getenv("ALIYUN_ACCESS_KEY");
         String accessKeySecret = System.getenv("ALIYUN_SECRET_KEY");
-        // 创建 OSSClient 实例。
+        // Create OSSClient instance.
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-        // 填写本地文件的完整路径。如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
+        // Fill in the complete path of the local file. If no local path is specified, it will upload the file stream from the local path corresponding to the project where the sample program belongs by default.
         InputStream inputStream = new FileInputStream("/Users/heatherwang/Desktop/IO Stream File/Ronan.jpeg");
-        // 依 次 填 写 Bucket 名 称 （ 例 如 examplebucket ） 和 Object 完 整 路 径 （ 例 如exampledir/exampleobject.txt）。Object 完整路径中不能包含 Bucket 名称。
+        // Fill in the Bucket name (such as examplebucket) and Object complete path (such as exampledir/exampleobject.txt) in sequence. The Object complete path cannot contain the Bucket name.
         ossClient.putObject("product-pilot-home", "Ronan.jpeg", inputStream);
-        // 关闭 OSSClient。
+        // Close OSSClient.
         ossClient.shutdown();
         return null;
     }
 
 
-//  测试使用 (整合 springcloud + alibaba oss) 简化方式，上传文件
-//  自动装配 OSSClient 实例
+//  Test usage (integrated springcloud + alibaba oss) simplified way, upload files
+//  Auto-assemble OSSClient instance
     @Resource
     private OSSClient ossClient;
 

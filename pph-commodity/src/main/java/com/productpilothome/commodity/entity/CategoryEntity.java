@@ -13,7 +13,7 @@ import java.util.List;
 import lombok.Data;
 
 /**
- * 商品分类表
+ * Product category table
  * 
  * @author heather
  * @email heatherwang0709@gmail.com
